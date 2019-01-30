@@ -1,0 +1,185 @@
+
+/* Variables */
+$primary: #333;
+$blue: #2690d4;
+$white: #fff;
+$black: #000;
+$dark-white: #eaeaea;
+$border-color: #666;
+$desktop: 700px;
+
+/* Media Query for responsiveness */
+@mixin desktop {
+    @media(min-width: #{$desktop}) {
+        @content;
+    }
+}
+
+@media(min-width: #{$desktop}) {
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr repeat(2, minmax(auto, 25em)) 1fr;
+    }
+}
+
+/* Core Styles */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+    line-height: 1.5em;
+    background: $primary;
+    color: $white;
+    text-align: center;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+h1, h2 ,h3 {
+    margin: 0;
+    padding: 1em 0;
+}
+
+p {
+    margin: 0;
+    padding: 1em 0;
+}
+
+.btn {
+    display: inline-block;
+    background: $primary;
+    color: $white;
+    text-decoration: none;
+    padding: 1em 2em;
+    margin: .5em 0;
+    border: 1px solid $border-color;
+
+    &:hover {
+        background: $dark-white;
+        color: $primary;
+    }
+}
+
+.content-wrap {
+    padding: 0 1.5em;
+
+    @include desktop {
+        grid-column: 2/4;
+        padding-bottom: 1.5em;
+    }
+}
+
+/* Showcase */
+#showcase  {
+    min-height: 450px;
+
+    .bg-image {
+        position: absolute;
+        background: $primary url('../img/showcase.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 450px;
+        z-index: -1;
+        opacity: 0.4;
+    }
+
+    h1 {
+        padding-top: 100px;
+        padding-bottom: 0;
+    }
+}
+
+/* Section A */
+#section-a {
+    background: $dark-white;
+    color: $primary;
+    // padding: 2em;
+
+    .content-text {
+        p {
+            @include desktop {
+                padding-top: 0;
+            }
+        }
+
+        @include desktop {
+            columns: 2;
+            column-gap: 2em
+        }
+    }
+
+}
+
+/* Section B */
+#section-b {
+    padding: 2em 1em 1em;
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0; 
+
+        @include desktop {
+            grid-column: 2/4;
+            display: flex;
+            justify-content: space-around;
+        }
+    }
+
+    li {
+        margin-bottom: 1em;
+        background: $white;
+        color: $primary;
+
+        @include desktop {
+            width: 31%;
+        }
+    }
+
+    .card-content {
+        padding: 1.5em;
+    }
+}
+
+/* Section C */
+#section-c {
+    background: $white;
+    color: $primary;
+    padding: 2em;
+}
+
+/* Section D */
+#section-d {
+   
+    .box {
+        padding: 2em;
+        color: $white;
+
+        @include desktop {
+            grid-column: span 2;
+        }
+
+        &:first-child {
+            background: $blue;
+        }  
+    }
+}
+
+/* Main foter */
+#main-footer {
+    padding: 2em;
+    background: $black;
+    color: $white;
+    
+    div {
+        @include desktop {
+            grid-column: span 2;
+        }   
+    }
+}
